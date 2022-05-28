@@ -3,13 +3,14 @@ const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose')
+const dotenv = require('dotenv');
+dotenv.config();
 
-// const connectionString = "mongodb+srv://<username>:<password>@<your-cluster-url>/<database-name>?retryWrites=true&w=majority";
-const connectionString = "mongodb+srv://shivarajad27:Shivaraja%40270295@tasktracker.j6469.mongodb.net/TaskTracker?retryWrites=true&w=majority";
+const dbConnectionString = process.env.DB_CONNECTION_STRING || "mongodb+srv://<username>:<password>@<your-cluster-url>/<database-name>?retryWrites=true&w=majority";
 
 // Connecting with mongo db
 mongoose
-  .connect(connectionString)
+  .connect(dbConnectionString)
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
