@@ -1,1 +1,34 @@
-<p>add-task works!</p>
+<div class="example-container">
+  <form [formGroup]="taskForm">
+    <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Task Name</mat-label>
+      <input matInput formControlName="name" placeholder="Name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Priority</mat-label>
+      <mat-select formControlName="priority">
+        <mat-option *ngFor="let priority of priorities" [value]="priority">
+          {{priority}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Start Date & Time</mat-label>
+      <input matInput type="datetime-local" placeholder="Start Date & Time" formControlName="startDateTime">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>End Date & Time</mat-label>
+      <input matInput type="datetime-local" placeholder="End Date & Time" formControlName="endDateTime">
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button color="primary">Add</button>
+  </div>
+  </form>
+</div>
